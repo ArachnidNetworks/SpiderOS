@@ -9,7 +9,7 @@ images, borrowing from the Slitaz iso image, to construct a super small system <
 that is capable of outperforming any available linux distro on modern hardware. </br>
 </br>
 </br>
-**How do the build tools work?**
+**How do the build tools work?** </br>
 CreateLiteStage3.sh is a tool that auto-magically downloads a copy of slitaz-rolling</br>
 and generates a .img file formatted as ext4 and then mounts and copies the files over.</br>
 This generates a functional filesystem, minus the configuration. If you so choose, one</br>
