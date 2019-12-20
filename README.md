@@ -1,6 +1,6 @@
 # SpiderOS
 A super-light OS (built off a Slitaz linux stage 3) designed for speed on modern hardware.
-</br>
+</br></br>
 **What is this?**</br>
 Our codebase needs to run fast, especially since it's all virtual. Due to this, </br>
 we need to optimize our code and our system. Due to the nature of this beast, </br>
