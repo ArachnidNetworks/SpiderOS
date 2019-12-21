@@ -46,7 +46,7 @@ do
 	if [ "$STARTVAR" == "Y" ]
 	then
 		#TODO: FIX TAR COMMAND
-		tar -cvpf "$SAVEPTH"/SpiderOS_Stage3.tar $(basename $MOUNTPOINT); 
+		tar -cvpf "$SAVEPTH"/SpiderOS_Stage3.tar -C "$MOUNTPOINT" .; 
 		printf "Stage 3 tar created!\n";
 		break;
 	elif [ "$STARTVAR" == "n" ]
