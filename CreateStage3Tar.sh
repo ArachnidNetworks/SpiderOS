@@ -24,9 +24,11 @@ do
 	fi
 done
 
+#Get user input for the save location
 printf "Where would you like to save the file (absolute path): ";
 read -r SAVEPTH;
 
+#Check User Input
 while true
 do
 	if [ "$SAVEPTH" == "" ]
@@ -38,14 +40,15 @@ do
 	fi
 done
 
+#Get user input to continue
 printf "Stage 3 ready for creation. Would you like to proceed? [Y/n]: ";
 read -r STARTVAR;
 
+#Depending on input, create tar file, exit or pop an error and reread Input.
 while true
 do
 	if [ "$STARTVAR" == "Y" ]
 	then
-		#TODO: FIX TAR COMMAND
 		tar -cvpf "$SAVEPTH"/SpiderOS_Stage3.tar -C "$MOUNTPOINT" .; 
 		printf "Stage 3 tar created!\n";
 		break;
