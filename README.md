@@ -28,9 +28,9 @@ has it's own open source build tools, making embedded Linux an option for Spider
 </br>
 </br>
 </br>
-# Creating A Base System
+## Creating A Base System
 </br>
-**Getting Started** </br>
+**Getting Started**</br>
 To prepare for the SpiderOS build, you will need the following:</br>
 - A linux system with ncurses, tar, BASH, and networking capabilities. </br>
   (Recommended CPU/RAM: 64 bit quad-core CPU at > 2.8 GHz, 16 gb RAM)
@@ -42,7 +42,7 @@ To prepare for the SpiderOS build, you will need the following:</br>
 **Generating the base system files** </br>
 Once you have ensured you have met the base requirements for creating a SpiderOS </br>
 image, run the following: </br>
-```Bash
+```bash
 cd /path/to/SpiderOS
 sudo ./SystemBuild/mkroot.sh
 ```
@@ -62,7 +62,7 @@ your base system's binaries. </br>
 </br>
 </br>
 </br>
-# Installing Software to the System
+## Installing Software to the System
 </br>
 **SpiderOS Ports** </br>
 SpiderOS doesn't use a package manager, but instead provides a BSD-like ports </br>
