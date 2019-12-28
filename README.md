@@ -111,7 +111,7 @@ and software for you to use. Once you are ready, proceed to the next phase. </br
 </br>
 </br>
 </br>
-#Installation
+## Installation
 **Generating an Install Image** </br>
 SpiderOS provides 3 facilities to assist in installation, located in the aptly </br>
 named Installation directory. One script will allow you to generate a .img file </br>
