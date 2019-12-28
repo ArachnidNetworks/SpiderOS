@@ -28,7 +28,7 @@ has it's own open source build tools, making embedded Linux an option for Spider
 <br/>
 <br/>
 <br/>
-#Creating A Base System
+## Creating A Base System
 <br/>
 **Getting Started** <br/>
 To prepare for the SpiderOS build, you will need the following:<br/>
@@ -62,7 +62,7 @@ your base system's binaries. <br/>
 <br/>
 <br/>
 <br/>
-#Installing Software to the System
+## Installing Software to the System
 <br/>
 **SpiderOS Ports** <br/>
 SpiderOS doesn't use a package manager, but instead provides a BSD-like ports <br/>
@@ -111,7 +111,7 @@ and software for you to use. Once you are ready, proceed to the next phase. <br/
 <br/>
 <br/>
 <br/>
-#Installation
+## Installation
 **Generating an Install Image** <br/>
 SpiderOS provides 3 facilities to assist in installation, located in the aptly <br/>
 named Installation directory. One script will allow you to generate a .img file <br/>
