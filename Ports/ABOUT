@@ -1,0 +1,53 @@
+###############################################################################
+# SpiderOS Ports Collection
+###############################################################################
+
+The SpiderOS Ports Collection is a set of Bash scripts that can be ported to
+other Linux Operating Systems and used to install utilities and applications
+that may be useful for your Linux installation. These ports are USER MAINTAINED
+and may result in the installation of old or deprecated software, unless the
+install script is an OFFICIAL PORT. In other words, read the install scripts
+before using them!!! The goal of this ports system is to provide a way to
+build from source automatically across architectures on the host device.
+
+###############################################################################
+# How do I use them?
+###############################################################################
+
+To run the installation scripts, you should have the Ports directory copied in
+to your base installation, and is recommended that you install it in the /usr
+directory to make it *BSD-like. Some scripts depend on other installed apps,
+and it is UP TO THE DEVELOPER OF THE INSTALL SCRIPT to implement dependency
+resolution.
+
+###############################################################################
+# How do I write them?
+###############################################################################
+
+All SpiderOS ports and tools are executable BASH scripts. There are only a few
+coding conventions one must follow for it to be accepted as an official install
+script:
+
+-No more than 90 characters per line
+-Standardized tabbing in loops, if/elif/else, functions, etc. 4-8 spaces are
+ suggested.
+-Minimal dependencies, and list them at the top of the script UNLESS you are
+ providing automatic dependency resolution in the install script.
+-Code is well-documented so maintainers can pick up where the author left off
+-Installation scripts are 1 .sh script per application.
+
+It may help to look at the Crux Linux, Gentoo Linux and SourceMage Linux ports
+for inspiration when creating installation scripts.
+
+All contributions to SpiderOS are GNU GPLv3 Licensed.
+
+###############################################################################
+# I ran into a bug while installing, can you guys help?
+###############################################################################
+
+We do not offer any official support channels, as this is a Linux distro for
+advanced users. However, this is a very barebones distro and you should be able
+to find help on most Linux forums and chat servers, because of this system's
+simplicity. When finding help, share what you did that led up to the error,
+what you've attempted to do to fix the error, and copy error logs to your help
+request.

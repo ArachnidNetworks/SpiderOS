@@ -1,0 +1,23 @@
+###############################################################################
+# TO-DO LIST
+###############################################################################
+
+###############################CRITICAL########################################
+- Create build and mount scripts for mkroot/update old Slitaz-based .sh scripts
+- Create custom kernels for different architectures
+- Write a package management system that can optionally be installed via a bash 
+  script or look into something like BSD-style ports to store install scripts?
+- Create scripts to compile GCC and GNU Make in mkroot directory
+
+################################IMPORTANT######################################
+- Port SourceMage and Gentoo Build scripts to SpiderOS to introduce more tools
+- Add SpiderOS branding to system
+- Reduce Size of system whenever possible
+
+###############################FEATURE REQUESTS################################
+- Introduce a package management system or a BSD-style ports system?
+- Switch to zsh/bash instead of ash shell?
+- Make system multi-user?
+
+################BUGS###############BUGS########BUGS############################
+
