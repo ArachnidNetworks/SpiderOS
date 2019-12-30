@@ -29,7 +29,7 @@ has it's own open source build tools, making embedded Linux an option for Spider
 <br/>
 <br/>
 ## Creating A Base System
-<br/>
+
 **Getting Started** <br/>
 To prepare for the SpiderOS build, you will need the following:<br/>
 - A linux system with ncurses, tar, BASH, and networking capabilities. <br/>
