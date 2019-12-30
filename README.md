@@ -60,9 +60,9 @@ directory. Consult this for documentation on how to use mkroot to cross-compile 
 your base system's binaries. <br/>
 *NOTE: The cross-compiling process can also be done to build a custom kernel,* <br/>
 *though the scripts to build a kernel need to be updated to allow this use case.* <br/>
-<br/>
-<br/>
-<br/>
+
+
+
 ## Installing Software to the System
 
 **SpiderOS Ports** <br/>
