@@ -51,7 +51,7 @@ sudo ./SystemBuild/mkroot.sh
 This will generate a stage 3 system with BusyBox in the SystemBuild folder, <br/>
 though it does create a few extra directories that you don't need :). To remedy <br/>
 this, look for the directory "root" in /CWD/output/host where CWD is the <br/>
-current working directory in which the script was executed. <br/>
+current working directory in which the script was executed. <br/> <br/>
 
 
 
