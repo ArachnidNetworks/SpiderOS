@@ -37,8 +37,9 @@ To prepare for the SpiderOS build, you will need the following:<br/>
 - If compiling for another device, find and install a cross-compiler for it's CPU. <br/>
 - Storage space to manipulate the newly built OS image and generate new images.<br/>
 - This repository downloaded via zip or git clone.
-<br/>
-<br/>
+
+
+
 **Generating the base system files** <br/>
 Once you have ensured you have met the base requirements for creating a SpiderOS <br/>
 image, run the following: <br/>
@@ -63,7 +64,7 @@ your base system's binaries. <br/>
 <br/>
 <br/>
 ## Installing Software to the System
-<br/>
+
 **SpiderOS Ports** <br/>
 SpiderOS doesn't use a package manager, but instead provides a BSD-like ports <br/>
 system to assist in installing software. SpiderOS ports are different in the <br/>
@@ -74,22 +75,22 @@ dependency resolution as SpiderOS provides power to the developer. <br/>
 To Install the SpiderOS Ports system, copy the folder into your installation's <br/>
 stage 3 build before converting it into an image. The recommended path for BSD <br/>
 users is to store it in the /usr directory. <br/>
-<br/>
-<br/>
+
+
 **GCC and GNU Make** <br/>
 The SpiderOS contain build scripts to install GCC and GNU make into your stage3 <br/>
 system directory. These scripts are located inside the SystemBuild directory. <br/>
 They are named InstallGCC.sh and InstallMake.sh and install the respective <br/>
 software.<br/>
-<br/>
-<br/>
+
+
 **Custom Linux Kernels** <br/>
 The way to guarantee high performance and functionality on SpiderOS is to build <br/>
 your own custom kernel. We provide a build script to allow you to do this on <br/>
 native hardware. However, you may need to manually build your own kernel to <br/>
 allow for Cross-Compiling on different hardware. Without a cross-compiler, the <br/>
 process involves the following: <br/>
-<br/>
+
 1) Browse to kernel.org and download the kernel version you wish to use.
 2) Extract the source code using tar and use cd to navigate to the directory in <br/>
    your terminal.
@@ -101,17 +102,18 @@ process involves the following: <br/>
    output directory is also the /boot directory in your Stage3.
 6) Execute the command `make O=/path/to/output install` where the output <br/>
    is (again) the /boot directory in your Stage3. <br/>
-<br/>
+
 Your Kernel image files should now be built in /boot in your new system files. <br/>
 *NOTE: This kernel compilation process is similar when using a cross-compiler.* <br/>
-<br/>
-<br/>
+
+
 After this, use chroot to enter your new system and install new applications <br/>
 and software for you to use. Once you are ready, proceed to the next phase. <br/>
-<br/>
-<br/>
-<br/>
+
+
+
 ## Installation
+
 **Generating an Install Image** <br/>
 SpiderOS provides 3 facilities to assist in installation, located in the aptly <br/>
 named Installation directory. One script will allow you to generate a .img file <br/>
@@ -120,8 +122,8 @@ ConvertToIMG.sh in the Installation directory. To create a tarball for UMSDOS <b
 style installation (like Gentoo Linux or SourceMage Linux), Execute the file <br/>
 CreateStage3Tar.sh in the Installation directory. Additional bootstrapping <br/>
 tools are incoming. <br/>
-<br/>
-<br/>
+
+
 **Installing** <br/>
 This part is outside of the scope of SpiderOS. However, it is recommended to <br/>
 consult the Gentoo Handbook for UMSDOS-style installation, and also recommended <br/>
