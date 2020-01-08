@@ -1,0 +1,43 @@
+###############################################################################
+#A GUIDED TOUR OF EMACS
+#######################
+The GNU Emacs Manual calls Emacs the extensible, customizable, self-documenting
+real-time display editor, but this description tells beginners little about what
+Emacs is capable of.
+
+Beyond just being able to edit plain text files, Emacs includes special features
+to help you write in many different human languages and programming/markup
+languages, as well as tools for compiling, running, and testing programs. Emacs
+integrates with GDB to provide an IDE (M-x gdb). Emacs can compare two files and 
+highlight their differences (M-x ediff). You might see now why some people 
+consider Emacs to be not merely a text editor but almost a complete operating 
+system. Some users find that they can do almost all of their work from 
+within Emacs.
+
+###############################################################################
+# WHY EMACS?
+############
+Emacs helps you be productive by providing an integrated environment for many 
+different kinds of tasks:
+
+    -All of the basic editing commands (and there are lots of them) are 
+     available no matter what you're trying to do: write code, read a manual, 
+     use a shell, or compose an email.
+    -All the tools Emacs provides for opening, saving, searching, and processing
+     text (and more) are available to you no matter what you're doing.
+
+This uniformity means that working within Emacs is often easier than learning to
+use a separate program, especially when that program is liable to have its own 
+set of editing capabilities and shortcuts.
+
+If Emacs doesn't work the way you'd like, you can use the Emacs Lisp (Elisp) 
+language to customize Emacs, automate common tasks, or add new features. Elisp 
+is very easy to get started with and yet remarkably powerful: you can use it to 
+alter and extend almost any feature of Emacs. You can make Emacs whatever you 
+want it to be by writing Elisp code; one testament to this is the fact that all 
+of the features pictured above (and many more described later in this tour) are 
+written in Elisp.
+
+Emacs is also portable. You can use the same editor (with the same 
+configuration) on many platforms, including GNU/Linux, BSD and other Unix 
+derivatives, and some proprietary operating systems such as Microsoft Windows.

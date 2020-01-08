@@ -1,0 +1,50 @@
+#!/bin/sh
+#GNU Coreutils install script
+#
+#Requires GNU Make, GCC, wget, sed, autoreconf and tar
+
+URL="https://ftp.gnu.org/gnu/coreutils/coreutils-8.31.tar.xz"
+FILENAME="coreutils-8.31.tar.xz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD" || exit 1
+	mkdir coreutils
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C coreutils --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/coreutils || exit 1
+	sed -i '/test.lock/s/^/#/' gnulib-tests/gnulib.mk
+	autoreconf -fiv
+	./configure --prefix=/sbin
+	sudo make
+}
+
+#Uninstallation functionality not supported.
+#deinstall() {
+#	download
+#	cd "$CWD"/coreutils
+#	make uninstall
+#}
+
+clean() {
+	cd "$CWD" || exit 1
+	rm -rf coreutils/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

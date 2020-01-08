@@ -1,0 +1,50 @@
+#!/bin/sh
+#ed install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="https://ftp.gnu.org/gnu/ed/ed-1.4.tar.gz"
+FILENAME="ed-1.4.tar.gz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir ED
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C ED --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/ED
+	./configure
+	make
+	sudo mv ed /bin
+
+	clean
+}
+deinstall() {
+	rm /bin/ed
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf ED/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "deinstall" ]
+then
+	deinstall
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

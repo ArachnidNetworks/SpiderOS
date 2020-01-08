@@ -1,0 +1,53 @@
+#!/bin/sh
+#NASM install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="http://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz"
+FILENAME="nasm-2.14.02.tar.xz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir NASM
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C NASM --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/NASM
+	./configure --prefix=/usr &&
+	make
+	sudo make install
+	
+	clean
+}
+configure() {
+	download
+	cd "$CWD"/NASM
+	./configure --prefix=/usr &&
+	sudo make configure
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf NASM/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "deinstall" ]
+then
+	deinstall
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

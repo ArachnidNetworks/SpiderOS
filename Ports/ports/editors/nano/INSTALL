@@ -1,0 +1,41 @@
+#!/bin/sh
+#Nano install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="https://www.nano-editor.org/dist/v4/nano-4.7.tar.gz"
+FILENAME="nano-4.7.tar.gz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir NANO
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C NANO --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/NANO
+	sudo sh install_sh
+	clean
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf NANO/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

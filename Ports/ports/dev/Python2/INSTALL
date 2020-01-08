@@ -1,0 +1,61 @@
+#!/bin/sh
+#Python 2 install script
+#
+#Requires GNU Make, g++, wget and tar
+
+URL="https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz"
+FILENAME="Python-2.7.17.tar.xz"
+VERSION="python-2.7.17"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir python
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C python	--strip-components=1 	
+}
+
+configure() {
+	export PYTHONDOCS=/usr/share/doc/python-2.7.17
+}
+
+install() {
+	download
+	cd "$CWD"/python
+	CXX="/usr/bin/g++"
+	./configure --prefix=/usr       \
+            --enable-shared     \
+            --with-system-expat \
+            --with-system-ffi   \
+            --with-ensurepip=yes \
+            --enable-unicode=ucs4 &&
+	make
+	sudo make install &&
+	chmod -v 755 /usr/lib/libpython2.7.so.1.0
+
+	configure
+	clean
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf python/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+elif [ "$1" = "configure" ]
+then
+	configure
+else
+	printf "Use a proper installation argument!\n"
+fi

@@ -1,0 +1,45 @@
+#!/bin/sh
+#GNU inetutils install script
+#Installs dnsdomainname, ftp, ifconfig, ping, ping6, talk, telnet, tftp and
+#traceroute.
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.4.0.tar.xz"
+FILENAME="iproute2-5.4.0.tar.xz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir iproute2
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C iproute2 --strip-components=1 	
+}
+
+install() {
+	download
+	cd "$CWD"/inetutils
+	./configure
+	make
+	make DOCDIR=/usr/share/doc/iproute2-5.4.0 install
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf iproute2/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

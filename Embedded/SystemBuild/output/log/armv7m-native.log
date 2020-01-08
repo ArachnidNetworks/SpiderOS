@@ -1,0 +1,5 @@
+=== building armv7m-linux-musleabi-native
+]2;armv7m-linux-musleabi-native+ PATH=/home/w00t/SpiderOS-dev/Embedded/SystemBuild/output/armv7m-linux-musleabi-cross/bin:/home/w00t/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin
++ make OUTPUT=/home/w00t/SpiderOS-dev/Embedded/SystemBuild/output/armv7m-linux-musleabi-native TARGET=armv7m-linux-musleabi 'GCC_CONFIG=--disable-nls --disable-libquadmath --disable-decimal-float --disable-multilib --enable-languages=c,c++ --with-arch=armv7-m --with-mode=thumb --disable-libatomic --enable-default-pie' 'COMMON_CONFIG=CFLAGS=" -g0 -Os" CXXFLAGS=" -g0 -Os" LDFLAGS=" -s" CC="armv7m-linux-musleabi-gcc -static --static" CXX="armv7m-linux-musleabi-g++ -static --static"' install -j17
+make: *** No rule to make target 'install'.  Stop.
++ exit 1

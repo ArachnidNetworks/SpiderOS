@@ -1,0 +1,62 @@
+#!/bin/sh
+#Python 3 install script
+#
+#Requires GNU Make, g++, wget and tar
+
+URL="https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz"
+FILENAME="Python-3.8.1.tar.xz"
+VERSION="python-3.8.1"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir python
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C python	--strip-components=1 	
+}
+
+configure() {
+	ln -svfn "$VERSION" /usr/share/doc/python-3
+	export PYTHONDOCS=/usr/share/doc/python-3/html
+}
+
+install() {
+	download
+	cd "$CWD"/python
+	CXX="/usr/bin/g++"
+	./configure --prefix=/usr       \
+            --enable-shared     \
+            --with-system-expat \
+            --with-system-ffi   \
+            --with-ensurepip=yes &&
+	make
+	sudo make install &&
+	chmod -v 755 /usr/lib/libpython3.8.so &&
+	chmod -v 755 /usr/lib/libpython3.so
+
+	configure
+	clean
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf python/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+elif [ "$1" = "configure" ]
+then
+	configure
+else
+	printf "Use a proper installation argument!\n"
+fi

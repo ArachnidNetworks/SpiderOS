@@ -1,0 +1,5 @@
+=== building x86_64-linux-musl-cross
+]2;x86_64-linux-musl-cross+ PATH=/home/w00t/SpiderOS-dev/Embedded/SystemBuild/output/i686-linux-musl-cross/bin:/home/w00t/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin
++ make OUTPUT=/home/w00t/SpiderOS-dev/Embedded/SystemBuild/output/x86_64-linux-musl-cross TARGET=x86_64-linux-musl 'GCC_CONFIG=--disable-nls --disable-libquadmath --disable-decimal-float --disable-multilib --enable-languages=c,c++ ' 'COMMON_CONFIG=CFLAGS=" -g0 -Os" CXXFLAGS=" -g0 -Os" LDFLAGS=" -s" CC="i686-linux-musl-gcc -static --static" CXX="i686-linux-musl-g++ -static --static"' install -j17
+make: *** No rule to make target 'install'.  Stop.
++ exit 1

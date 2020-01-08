@@ -1,0 +1,54 @@
+#!/bin/sh
+#Perl install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="https://www.cpan.org/src/5.0/perl-5.30.1.tar.xz"
+FILENAME="perl-5.30.1.tar.xz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir PERL
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C PERL --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/PERL
+	echo "127.0.0.1 localhost $(hostname)" >> /etc/hosts
+	export BUILD_ZLIB=False
+	export BUILD_BZIP2=0
+	sh Configure -des -Dprefix=/usr                 \
+                  -Dvendorprefix=/usr           \
+                  -Dman1dir=/usr/share/man/man1 \
+                  -Dman3dir=/usr/share/man/man3 \
+                  -Dpager="/usr/bin/less -isR"  \
+                  -Duseshrplib                  \
+                  -Dusethreads
+	make
+	sudo make install
+	unset BUILD_ZLIB BUILD_BZIP2
+
+	clean
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf PERL/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

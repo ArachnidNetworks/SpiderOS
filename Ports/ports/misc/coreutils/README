@@ -1,0 +1,8 @@
+###############################################################################
+# GNU COREUTILS
+###############
+
+Gnu Coreutils are the basic set of file, shell and text manipulation utilities
+necessary for daily use as an operating system. If your operating system does
+not already have these tools preinstalled, it might be useful to install them
+here.

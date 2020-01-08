@@ -2,7 +2,7 @@
 # SpiderOS Ports Collection
 ###############################################################################
 
-The SpiderOS Ports Collection is a set of Bash scripts that can be ported to
+The SpiderOS Ports Collection is a set of Makefiles that can be ported to
 other Linux Operating Systems and used to install utilities and applications
 that may be useful for your Linux installation. These ports are USER MAINTAINED
 and may result in the installation of old or deprecated software, unless the
@@ -16,28 +16,30 @@ build from source automatically across architectures on the host device.
 
 To run the installation scripts, you should have the Ports directory copied in
 to your base installation, and is recommended that you install it in the /usr
-directory to make it *BSD-like. Some scripts depend on other installed apps,
-and it is UP TO THE DEVELOPER OF THE INSTALL SCRIPT to implement dependency
+directory to make it *BSD-like. Some software depends on other installed apps,
+and it is UP TO THE DEVELOPER OF THE MAKEFILE to provide automatic dependency
 resolution.
 
 ###############################################################################
 # How do I write them?
 ###############################################################################
 
-All SpiderOS ports and tools are executable BASH scripts. There are only a few
-coding conventions one must follow for it to be accepted as an official install
-script:
+All SpiderOS ports follow standard Makefile conventions, and there are only a
+few requirements to follow.
 
--No more than 90 characters per line
--Standardized tabbing in loops, if/elif/else, functions, etc. 4-8 spaces are
- suggested.
--Minimal dependencies, and list them at the top of the script UNLESS you are
- providing automatic dependency resolution in the install script.
--Code is well-documented so maintainers can pick up where the author left off
--Installation scripts are 1 .sh script per application.
-
-It may help to look at the Crux Linux, Gentoo Linux and SourceMage Linux ports
-for inspiration when creating installation scripts.
+- Your port should have the dependences listed at the top of the Makefile, by
+  using comments.
+- There should be only one Makefile.
+- Your port should have a directory structure of
+  PORTNAME/
+     files/ #this is if you have patchsets and where you download files to.
+     Makefile
+     distinfo #supporting file, use if you wish
+- Your Makefile must support make install, make deinstall and make clean.
+	-make install: installs the application to the proper directories.
+	-make deinstall: uninstalls the application from the proper directories
+	-make clean: cleans the current port directory to it's original state.
+- Your port MUST be in stable condition to be accepted into the main ports tree
 
 All contributions to SpiderOS are GNU GPLv3 Licensed.
 

@@ -1,0 +1,65 @@
+#!/bin/sh
+#GNU inetutils install script
+#Installs dnsdomainname, ftp, ifconfig, ping, ping6, talk, telnet, tftp and
+#traceroute.
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="http://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.xz"
+FILENAME="inetutils-1.9.4.tar.xz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir inetutils
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C inetutils --strip-components=1 	
+}
+
+install() {
+	download
+	cd "$CWD"/inetutils
+	mkdir "$CWD"/build
+	./configure --prefix="$CWD"/build        \
+            --localstatedir=/var \
+            --disable-logger     \
+            --disable-whois      \
+            --disable-rcp        \
+            --disable-rexec      \
+            --disable-rlogin     \
+            --disable-rsh        \
+            --disable-servers
+	make
+	make install
+	mv -v "$CWD"/build/bin/* /sbin
+}
+
+deinstall() {
+	download
+	cd "$CWD"/inetutils
+	./configure --prefix="/"
+	make uninstall
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf build/ inetutils/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "deinstall" ]
+then
+	deinstall
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

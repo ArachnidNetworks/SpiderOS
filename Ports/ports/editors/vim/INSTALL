@@ -1,0 +1,50 @@
+#!/bin/sh
+#Vim install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="https://www.mirrorservice.org/pub/vim/unix/vim-8.2.tar.bz2"
+FILENAME="vim-8.2.tar.bz2"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir VIM
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C VIM --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/VIM
+	make
+	make install
+	clean
+}
+deinstall() {
+	download
+	cd "$CWD"/VIM
+	make uninstall
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf VIM/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "deinstall" ]
+then
+	deinstall
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

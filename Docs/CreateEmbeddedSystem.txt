@@ -1,0 +1,20 @@
+########################SPIDEROS EMBEDDED SYSTEM MANUAL#########################
+
+Sometimes Buildroot produces images too large for the target hardware, and the
+goal is to produce the lightest system possible. The SpiderOS embedded system
+build toolkit is a simple way to produce a working Linux chroot running busybox
+and the latest linux kernel, with a "toybox" for additional apps like fsck.
+
+############INSTALLATION############
+
+Assuming the chroot is being built ON THE TARGET ARCHITECTURE, run the below
+scripts with root permissions in order:
+
+1) SpiderOS*/Embedded/SystemBuild/mkroot.sh
+2) SpiderOS*/Embedded/CustomKernel/BuildCustomKernel.sh
+
+Once these complete, install the tools you would into the chroot by using make
+on the host machine.
+
+To perform a cross-compilation of mkroot, see the documentation provided in
+SpiderOS*/Docs.

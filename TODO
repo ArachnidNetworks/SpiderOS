@@ -1,0 +1,31 @@
+###############################################################################
+# TO-DO LIST
+###############################################################################
+
+See Critical First, Then see important.
+
+###############################CRITICAL########################################
+- Write a bash script to generate a buildroot config based on hardware info.
+- Decide what software to install with buildroot
+- Complete musl-cross-make and mkroot build
+    -figure out how the two work together
+
+################################IMPORTANT######################################
+- Port SourceMage and Gentoo Build scripts to SpiderOS to introduce more tools
+- Add SpiderOS branding to system
+- Reduce Size of system whenever possible
+
+###############################FEATURE REQUESTS################################
+- Make system multi-user?
+- Make vim the default editor instead of vi/nano?
+- Make a script to assist in the creation of an fstab?(ex. arch linux genfstab)
+- Make bash scripts so they take arguments instead of them behaving like 
+  "install wizards"?
+
+###################################DONE########################################
+- Create build and mount scripts for mkroot/update old Slitaz-based .sh scripts
+- Write a package management system that can optionally be installed via a bash
+  script or look into something like BSD-style ports to store install scripts?
+- Discovered Buildroot to construct a Linux filesystem, one-and-done.
+################BUGS###############BUGS########BUGS############################
+

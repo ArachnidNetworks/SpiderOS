@@ -1,0 +1,48 @@
+################################################################################
+# WHAT IS GNU NANO?
+###################
+
+GNU nano was designed to be a free replacement for the Pico text editor, part of
+the Pine email suite from The University of Washington. It aimed to "emulate 
+Pico as closely as is reasonable and then include extra functionality".
+
+################################################################################
+# WHAT IS THE HISTORY BEHIND NANO?
+##################################
+
+Funny you should ask!
+In the beginning...
+
+For years Pine was THE program used to read email on a Unix system. The Pico 
+text editor is the portion of the program one would use to compose his or her 
+mail messages. Many beginners to Unix flocked to Pico and Pine because of their 
+well organized, easy to use interfaces. With the proliferation of GNU/Linux in 
+the mid to late 90's, many University students became intimately familiar with 
+the strengths (and weaknesses) of Pine and Pico.
+
+...Then came Debian...
+
+The Debian GNU/Linux distribution, known for its strict standards in 
+distributing truly "free" software (i.e. software with no restrictions on 
+redistribution), would not include a binary package for Pine or Pico. Many 
+people had a serious dilemma: they loved these programs, but the versions 
+available at the time were not truly free software in the GNU sense of the word.
+
+...The event...
+
+It was in late 1999 when Chris Allegretta (our hero) was yet again complaining 
+to himself about the less-than-perfect license Pico was distributed under, the 
+1000 makefiles that came with it and how just a few small improvements could 
+make it the Best Editor in the World (TM). Having been a convert from Slackware 
+to Debian, he missed having a simple binary package that included Pine and Pico, 
+and had grown tired of downloading them himself.
+
+Finally something snapped inside and Chris coded and hacked like a madman for 
+many hours straight one weekend to make a (barely usable) Pico clone, at the 
+time called TIP (Tip Isn't Pico). The program could not be invoked without a 
+filename, could not save files, had no help text display, spell checker, and so 
+forth. But over time it improved, and with the help of a few great coders it 
+matured to the (hopefully) stable state it is in today.
+
+In February 2001, nano was declared an official GNU program by Richard Stallman. 
+nano also reached its first production release on March 22, 2001.

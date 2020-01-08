@@ -1,0 +1,52 @@
+#!/bin/sh
+#Emacs install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+URL="http://gnu.mirror.constant.com/emacs/emacs-26.3.tar.xz"
+FILENAME="emacs-26.3.tar.xz"
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir emacs 
+	wget "$URL"
+	tar -xvpf "$FILENAME" -C emacs --strip-components=1 	
+}
+install() {
+	download
+	cd "$CWD"/emacs
+	./configure
+	make
+	sudo make install
+
+	clean
+}
+deinstall() {
+	download
+	cd "$CWD"/emacs
+	sudo make uninstall
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf emacs/ "$FILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "deinstall" ]
+then
+	deinstall
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi

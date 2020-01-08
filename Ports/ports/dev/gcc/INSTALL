@@ -1,0 +1,89 @@
+#!/bin/sh
+#Vim install script
+#
+#Requires GNU Make, GCC, wget and tar
+
+GCCURL="http://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz"
+GCCFILENAME="gcc-9.2.0.tar.xz"
+MPFRURL="http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz"
+MPFRFILENAME="mpfr-4.0.2.tar.xz"
+MPCURL="https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz"
+MPCFILENAME="mpc-1.1.0.tar.gz"
+GMPURL="http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz"
+GMPFILENAME="gmp-6.1.2.tar.xz"
+
+CWD="$(pwd)"
+
+download() {
+	cd "$CWD"
+	mkdir GCC
+	wget "$GCCURL"
+	tar -xvpf "$GCCFILENAME" -C GCC --strip-components=1
+	cd GCC
+	mkdir mpfr
+	wget "$MPFRURL"
+	tar -xvpf "$MPFRFILENAME" -C mpfr --strip-components=1
+	mkdir mpc
+	wget "$MPCURL"
+	tar -xvpf "$MPCFILENAME" -C mpc --strip-components=1
+	mkdir gmp
+	wget "$GMPURL"
+	tar -xvpf "$GMPFILENAME" -C gmp --strip-components=1
+
+	rm "$GMPFILENAME" "$MPCFILENAME" "$MPFRFILENAME"
+}
+
+install() {
+	download
+	cd "$CWD"/GCC
+	ARCH="$(uname -m)"
+	
+	if [ "$ARCH" = "x86_64" ]
+	then
+		case $(uname -m) in
+  		x86_64)
+    		sed -e '/m64=/s/lib64/lib/' \
+        	-i.orig gcc/config/i386/t-linux64
+ 		;;
+		esac
+	fi
+
+	mkdir build &&
+	cd build &&
+	../configure                                           \
+    	--prefix=/usr                                      \
+    	--disable-multilib                                 \
+    	--with-system-zlib                                 \
+    	--enable-languages=c,c++,d,fortran,go,objc,obj-c++ &&
+	make
+	
+	sudo make install &&
+	sudo mkdir -pv /usr/share/gdb/auto-load/usr/lib &&
+	sudo mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib &&
+	sudo chown -v -R root:root \
+   	 /usr/lib/gcc/*linux-gnu/9.2.0/include{,-fixed}
+
+	sudo rm -rf /usr/lib/gcc/$(gcc -dumpmachine)/9.2.0/include-fixed/bits/
+
+	clean
+}
+
+clean() {
+	cd "$CWD"
+	rm -rf GCC/ "$GCCFILENAME"
+}
+
+#Get User input from executing script. If it matches following words, call
+#the appropriate function.
+if [ "$1" = "install" ]
+then
+	install
+elif [ "$1" = "download" ]
+then
+	download
+elif [ "$1" = "clean" ]
+then
+	clean
+else
+	printf "Use a proper installation argument!\n"
+fi
